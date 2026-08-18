@@ -70,7 +70,7 @@ export const EXPERIENCE: ExperienceRole[] = [
   },
   {
     position: 'Intern — Web Developer',
-    company: '[COMPANY NAME]',
+    company: 'Kloudping IT Solutions',
     period: 'March 2023 — June 2023',
     stage: 'Starting point',
     current: false,
