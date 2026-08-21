@@ -1,0 +1,361 @@
+/* =========================================================================
+   Ravi Dhileeban — portfolio design system
+   Dark enterprise theme: navy surfaces, hairline borders, single cyan accent.
+   ========================================================================= */
+
+:root {
+  --bg: #0b1020;
+  --bg-alt: #0e1426;
+  --surface: #111827;
+  --surface-2: #151d31;
+  --border: #1f2937;
+  --border-strong: #2b3648;
+  --text: #e5e7eb;
+  --text-strong: #f8fafc;
+  --muted: #94a3b8;
+  --muted-dim: #6b7c93;
+  --accent: #38bdf8;
+  --accent-2: #3b82f6;
+  --accent-soft: rgba(56, 189, 248, 0.12);
+
+  --font-sans: 'Inter', 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Mono', 'Consolas', 'SFMono-Regular', 'Roboto Mono', monospace;
+
+  --radius: 10px;
+  --radius-sm: 6px;
+  --maxw: 1120px;
+  --header-h: 64px;
+
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.22);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 16px);
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--text-strong);
+  line-height: 1.25;
+  margin: 0 0 0.5em;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: clamp(1.9rem, 1.2rem + 2.6vw, 3rem);
+}
+
+h2 {
+  font-size: clamp(1.45rem, 1.1rem + 1.3vw, 2rem);
+}
+
+h3 {
+  font-size: 1.125rem;
+}
+
+h4 {
+  font-size: 0.95rem;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  color: var(--accent-2);
+  text-decoration: underline;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ---------------------------------------------------------------- layout */
+
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section {
+  padding: clamp(56px, 7vw, 96px) 0;
+  border-top: 1px solid var(--border);
+}
+
+.section--alt {
+  background: var(--bg-alt);
+}
+
+.section__head {
+  margin-bottom: 32px;
+  max-width: 780px;
+}
+
+.section__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section__eyebrow::before {
+  content: '';
+  width: 22px;
+  height: 1px;
+  background: var(--accent);
+  flex: none;
+}
+
+.section__lead {
+  color: var(--muted);
+  margin: 0;
+  max-width: 70ch;
+}
+
+.grid {
+  display: grid;
+  gap: 20px;
+}
+
+.grid--2 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.grid--3 {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+/* ----------------------------------------------------------------- cards */
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px;
+  transition:
+    border-color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.card:hover {
+  border-color: var(--border-strong);
+}
+
+.card__title {
+  margin: 0 0 4px;
+}
+
+.card__meta {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-dim);
+  margin: 0 0 12px;
+}
+
+/* ---------------------------------------------------------------- badges */
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  padding: 5px 11px;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  background: var(--surface-2);
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.badge--accent {
+  border-color: rgba(56, 189, 248, 0.35);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.badge--mono {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+/* --------------------------------------------------------------- buttons */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 11px 20px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-strong);
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.925rem;
+  font-weight: 550;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    background 0.16s ease,
+    border-color 0.16s ease,
+    color 0.16s ease;
+}
+
+.btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.btn--primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #06121f;
+}
+
+.btn--primary:hover {
+  background: #7dd3fc;
+  border-color: #7dd3fc;
+  color: #06121f;
+}
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ------------------------------------------------------------- bullet list */
+
+.bullets li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 9px;
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.bullets li::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 0.66em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.75;
+}
+
+.bullets li:last-child {
+  margin-bottom: 0;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted-dim);
+  margin: 18px 0 8px;
+}
+
+/* -------------------------------------------------------------- skip link */
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: 12px 18px;
+  background: var(--accent);
+  color: #06121f;
+  border-radius: 0 0 var(--radius-sm) 0;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
